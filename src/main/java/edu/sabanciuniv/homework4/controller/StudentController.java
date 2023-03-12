@@ -6,6 +6,7 @@ import edu.sabanciuniv.homework4.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,8 @@ public class StudentController {
 
 
     //Get all students from database
+
+
     @GetMapping("/students")
     public List<Student> getAllStudents(){
         return studentService.getAllStudents();

@@ -1,11 +1,10 @@
 package edu.sabanciuniv.homework4.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -19,6 +18,9 @@ public class Student {
     private String phoneNumber;
     private String emailAddress;
 
+    @ManyToMany
+    private Set<Course> courseList = new HashSet<>();
+
     public Student() {
     }
 
@@ -27,6 +29,15 @@ public class Student {
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+    }
+
+    public Student(int id, String name, String lastname, String phoneNumber, String emailAddress, Set<Course> courseList) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.courseList = courseList;
     }
 
     public int getId() {
@@ -67,6 +78,14 @@ public class Student {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public Set<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(Set<Course> courseList) {
+        this.courseList = courseList;
     }
 
     @Override
